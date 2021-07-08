@@ -49,7 +49,7 @@ public class CameraFollow : MonoBehaviour
     private void LateUpdate()
     {
         x += Input.GetAxis("Mouse X") * cameraSpeed.x;
-        y -= Input.GetAxis("Mouse") * cameraSpeed.y;
+        y -= Input.GetAxis("Mouse Y") * cameraSpeed.y;
 
         y = cameraCalc.ClampAngle(y, cameraYLimits.x, cameraYLimits.y);
 
@@ -65,7 +65,16 @@ public class CameraFollow : MonoBehaviour
         }
         else
         {
-            
+            finalDistance = Mathf.Min(-minDistance, -maxDistance + distanceOffset);
+
+            rotation = Quaternion.Euler(y, x, 0.0f);
+            Vector3 changedPos = target.position - new Vector3(0.0f, newPos, 0.0f);
+            position = rotation * new Vector3(0.0f, 0.0f, finalDistance) + changedPos;
+            position.y = position.y + yOffset;
         }
+
+        transform.rotation = rotation;
+        transform.position = position;
+        resetCamera = false;
     }
 }
