@@ -23,7 +23,7 @@ public class Controller : MonoBehaviour
     public void FixedUpdate()
     {
         //Get the motor and steering input WASD
-        float motor = maxMotorTorque * Input.GetAxis("Vertical"); //W-Forwards, S-Backwords
+        float motor = maxMotorTorque * Input.GetAxis("Vertical");//W-Forwards, S-Backwords
         float steering = maxSteeringAngle * Input.GetAxis("Horizontal"); //A-Left, D-Right
         //Foreach loop that runs through all the axles in the list
         foreach (Axle axle in axles)
