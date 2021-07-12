@@ -33,7 +33,7 @@ public class JumpScript : MonoBehaviour
         {
             // Add a force to the car that ignores mass
             rigidBody.AddForce(jumpValue * jumpForce, ForceMode.Impulse);
-            isGrounded = false;
         }
+        isGrounded = false;
     }
 }
