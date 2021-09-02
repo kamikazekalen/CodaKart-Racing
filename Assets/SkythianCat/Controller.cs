@@ -37,8 +37,8 @@ public class Controller : MonoBehaviour
 
         if (!frozen)
         {
-            float motor = GetSpeed(Input.GetAxis("Vertical"));//W-Forwards, S-Backwords
-            float steering = maxSteeringAngle * Input.GetAxis("Horizontal"); //A-Left, D-Right
+            motor = GetSpeed(Input.GetAxis("Vertical"));//W-Forwards, S-Backwords
+            steering = maxSteeringAngle * Input.GetAxis("Horizontal"); //A-Left, D-Right
         }
         //Foreach loop that runs through all the axles in the list
         foreach (Axle axle in axles)
@@ -69,7 +69,7 @@ public class Controller : MonoBehaviour
         frozen = true;
     }
 
-}
+
 
     private float GetSpeed(float verticalAxis)
     {

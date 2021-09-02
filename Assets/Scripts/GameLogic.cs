@@ -37,7 +37,26 @@ public class GameLogic : MonoBehaviour
         positionTextUpper.text = playerPosition.ToString();
         positionTextLower.text = playerCount.ToString();
 
+        StartCoroutine(SetOff());
+    }
+
+    IEnumerator SetOff()
+    {
+        Controller kartScript = player.GetComponent<Controller>();
+        kartScript.Freeze();
+        yield return new WaitForSeconds(1.0f);
+        startTimerText.text = "2";
+        startTimerText.color = Color.red;
+        yield return new WaitForSeconds(1.0f);
+        startTimerText.text = "1";
+        startTimerText.color = Color.yellow;
+        yield return new WaitForSeconds(1.0f);
         startTiming = true;
+        kartScript.Unfreeze();
+        startTimerText.text = "GO!";
+        startTimerText.color = Color.green;
+        yield return new WaitForSeconds(1.0f);
+        startTimerText.text = "";
     }
 
     // Update is called once per frame
