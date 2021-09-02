@@ -18,6 +18,7 @@ public class Controller : MonoBehaviour
     public List<Axle> axles;
     public float maxMotorTorque;
     public float maxSteeringAngle;
+    public bool frozen = false;
 
     // Water
     private float waterSlowdown = 1.0f;
@@ -31,8 +32,14 @@ public class Controller : MonoBehaviour
     public void FixedUpdate()
     {
         //Get the motor and steering input WASD
-        float motor = GetSpeed(Input.GetAxis("Vertical"));//W-Forwards, S-Backwords
-        float steering = maxSteeringAngle * Input.GetAxis("Horizontal"); //A-Left, D-Right
+        float motor = 0;
+        float steering = 0;
+
+        if (!frozen)
+        {
+            float motor = GetSpeed(Input.GetAxis("Vertical"));//W-Forwards, S-Backwords
+            float steering = maxSteeringAngle * Input.GetAxis("Horizontal"); //A-Left, D-Right
+        }
         //Foreach loop that runs through all the axles in the list
         foreach (Axle axle in axles)
         {
@@ -49,7 +56,20 @@ public class Controller : MonoBehaviour
                 axle.rightWheel.steerAngle = steering;
             }
         }
+
     }
+
+    public void Unfreeze()
+    {
+        frozen = false;
+    }
+
+    public void Freeze()
+    {
+        frozen = true;
+    }
+
+}
 
     private float GetSpeed(float verticalAxis)
     {

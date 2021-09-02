@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
+    public Vector3 startPos;
+    public Transform player;
+
     public int playerPosition = 1;
     public int playerCount = 1;
 
@@ -29,6 +32,8 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player.position = startPos;
+        
         positionTextUpper.text = playerPosition.ToString();
         positionTextLower.text = playerCount.ToString();
 
