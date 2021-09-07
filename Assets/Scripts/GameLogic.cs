@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour
 {
+    public Transform[] checkpointArray;
+    public static Transform[] checkpointA;
+
+    public static int currentCheckpoint = 0;
+    public static int currentLap = 0;
+
+    public int Lap;
+    public int maxLaps = 3;
+
     public Vector3 startPos;
     public Transform player;
 
@@ -32,6 +41,9 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentCheckpoint = 0;
+        currentLap = 0;
+
         player.position = startPos;
         
         positionTextUpper.text = playerPosition.ToString();
@@ -59,7 +71,7 @@ public class GameLogic : MonoBehaviour
         startTimerText.text = "";
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
        if (startTiming)
@@ -79,6 +91,30 @@ public class GameLogic : MonoBehaviour
         lapTimerText.text = string.Format("{0:00}:{1:00}.{2:000}", lapTime[0], lapTime[1], lapTime[2]);
         totalTimerText.text = string.Format("{0:00}:{1:00}.{2:000}", totalTime[0], totalTime[1], totalTime[2]);
 
+        if (currentLap != Lap)
+        {
+            if (Lap != 0)
+            {
+                lapTimeCount = 0.0f;
+            }
+        }
+        Lap = currentLap;
+
+        if(Lap > maxLaps)
+        {
+            this.enabled = false;
+        }
+
+        if (Lap == 0)
+        {
+            lapText.text = "Lap " + (Lap + 1) + " of " + maxLaps;
+        }
+        else if (Lap <= maxLaps)
+        {
+            lapText.text = "Lap " + Lap + " of " + maxLaps;
+        }
+
         positionTextUpper.text = playerPosition.ToString();
+        checkpointA = checkpointArray;
     }
 }
