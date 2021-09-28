@@ -6,7 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     CameraCalculations cameraCalc;
 
-    public Transform target;
+    public static Transform target;
 
     public int playerLayerNumber = 9;
 

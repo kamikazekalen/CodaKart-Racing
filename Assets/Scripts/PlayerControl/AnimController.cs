@@ -4,10 +4,10 @@ using UnityEngine;
 public class AnimController : MonoBehaviour
 {
     private bool noKeyPress;
-    public GameObject kart;
-    public GameObject character;
-    [SerializeField] Animator kartAnim;
-    [SerializeField] Animator characterAnim;
+    public static GameObject kart;
+    public static GameObject character;
+    [SerializeField] public static Animator kartAnim;
+    [SerializeField] public static Animator characterAnim;
 
     void Start()
     {

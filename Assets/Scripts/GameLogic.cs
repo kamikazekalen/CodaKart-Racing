@@ -19,7 +19,7 @@ public class GameLogic : MonoBehaviour
 
     //Starting position and the player
     public Vector3 startPos;
-    public Transform player;
+    public static Transform player;
 
     //Total platers and the current player position as an int
     public int playerPosition = 1;
