@@ -19,6 +19,7 @@ public class GameLogic : MonoBehaviour
 
     //Starting position and the player
     public Vector3 startPos;
+    public Quaternion startRotation;
     public static Transform player;
 
     //Total platers and the current player position as an int
@@ -56,6 +57,7 @@ public class GameLogic : MonoBehaviour
 
         //Teleport player
         player.position = startPos;
+        player.rotation = startRotation;
         
         //Set the playerposition and total players to the current player count
         positionTextUpper.text = playerPosition.ToString();

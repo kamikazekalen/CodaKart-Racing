@@ -6418,6 +6418,7 @@ MonoBehaviour:
   Lap: 0
   maxLaps: 3
   startPos: {x: 1731.66, y: 0, z: 17.58}
+  startRotation: {x: 0, y: -19.367, z: 0, w: 0}
   playerPosition: 1
   playerCount: 1
   lapText: {fileID: 1697429959}
