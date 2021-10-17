@@ -457,6 +457,22 @@ MonoBehaviour:
   catKart: {fileID: 75226284003175538}
   boyKart: {fileID: 1626758949808505864}
   girlKart: {fileID: 145367621208687893}
+  boyFace: {fileID: 2100000, guid: 9164da76a74dc0c4f8e2d0027259cfaa, type: 2}
+  boyHair: {fileID: 2100000, guid: ce84e04d904c33e47b2496553e32e6b3, type: 2}
+  girlFace: {fileID: 2100000, guid: 8328c4a7674b30243b3a86aea45a046a, type: 2}
+  girlHair: {fileID: 2100000, guid: 9e54d549fb55bf644b75838ac9d1ff47, type: 2}
+  boySkin1: {fileID: 2800000, guid: 050d8695eb9764947a6da01b4e526ab5, type: 3}
+  boySkin2: {fileID: 2800000, guid: e3b3783b98b77804eae19d39490cdc81, type: 3}
+  boySkin3: {fileID: 2800000, guid: 9d119cf67f10f98498ab1efec546755d, type: 3}
+  girlSkin1: {fileID: 2800000, guid: 61086b06b83e3d0458862ec602eee9d2, type: 3}
+  girlSkin2: {fileID: 2800000, guid: 5d49217b3154a92468b901cdf41d31d2, type: 3}
+  girlSkin3: {fileID: 2800000, guid: ba17943f1b3c6d24b8ca5587024d411d, type: 3}
+  boyHair1: {fileID: 2800000, guid: c3d9f353ef4b5aa4699f4767774037f3, type: 3}
+  boyHair2: {fileID: 2800000, guid: 78aee82e7738caf4592e16f51f84f7c6, type: 3}
+  boyHair3: {fileID: 2800000, guid: bd3329aa7b5d8544e9e9e3612b479d22, type: 3}
+  girlHair1: {fileID: 2800000, guid: ca56f8dbd4c7ca94295d46dfb6a8b320, type: 3}
+  girlHair2: {fileID: 2800000, guid: 6ae7a02449b591e4c9320a36e58a04ca, type: 3}
+  girlHair3: {fileID: 2800000, guid: a96ddf98e243bbc4d9fd825220e01a93, type: 3}
 --- !u!114 &37265527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4299,11 +4315,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
+    - m_Text: Hair 1
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: Hair 2
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: Hair 3
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4491,7 +4507,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: Hair 1
 --- !u!222 &1565758118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5744,11 +5760,11 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
-    - m_Text: Option A
+    - m_Text: Skin 1
       m_Image: {fileID: 0}
-    - m_Text: Option B
+    - m_Text: Skin 2
       m_Image: {fileID: 0}
-    - m_Text: Option C
+    - m_Text: Skin 3
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6541,7 +6557,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Option A
+  m_Text: Skin 1
 --- !u!222 &2099716077
 CanvasRenderer:
   m_ObjectHideFlags: 0
