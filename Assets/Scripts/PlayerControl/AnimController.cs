@@ -4,20 +4,16 @@ using UnityEngine;
 public class AnimController : MonoBehaviour
 {
     private bool noKeyPress;
-    public static GameObject kart;
-    public static GameObject character;
     [SerializeField] public static Animator kartAnim;
     [SerializeField] public static Animator characterAnim;
-
-    void Start()
-    {
-        kartAnim = kart.GetComponent<Animator>();
-        characterAnim = character.GetComponent<Animator>();
-    }
+    public static bool ready = false;
 
     void Update()
     {
-        RunAnimations();
+        if (ready == true)
+        {
+            RunAnimations();
+        }
     }
 
     private void RunAnimations()

@@ -30,8 +30,9 @@ public class CharacterSwapper : MonoBehaviour
     void Start()
     {
         //Set the animations
-        AnimController.character = player.transform.Find("Char").gameObject;
-        AnimController.kart = player.transform.Find("Kart").gameObject;
+        AnimController.characterAnim = player.transform.Find("Char").gameObject.GetComponent<Animator>();
+        AnimController.kartAnim = player.transform.Find("Kart").gameObject.GetComponent<Animator>();
+        AnimController.ready = true;
 
         //Set dropdown listeners to all the functions changing char, kart, hair, and skin
         characterDropdown.onValueChanged.AddListener(delegate { CharacterChanged(); });
