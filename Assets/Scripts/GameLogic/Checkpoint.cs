@@ -20,17 +20,20 @@ public class Checkpoint : MonoBehaviour
             if (GameLogic.currentCheckpoint + 1 < GameLogic.checkpointA.Length)
             {
                 //If the current checkpoint is 0 in the array, Then increase lap
-                if (GameLogic.currentCheckpoint == 0)
-                {
-                    GameLogic.currentLap++;
-                }
+                //if (GameLogic.currentCheckpoint == 0)
+                //{
+                    
+                //}
                 //Increase checkpoint if it is not last checkpoint
                 GameLogic.currentCheckpoint++;
+                Debug.Log("Increasing Checkpoint: " + GameLogic.currentCheckpoint);
             }
             else
             {
                 //Reset checkpoint to 0 if last check point is reached
                 GameLogic.currentCheckpoint = 0;
+                GameLogic.currentLap++;
+                Debug.Log("Increasing Lap: " + GameLogic.currentLap);
             }
         }
     }

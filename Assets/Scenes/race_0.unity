@@ -6418,8 +6418,8 @@ MonoBehaviour:
   finishPanel: {fileID: 1215569720}
   Lap: 0
   maxLaps: 3
-  startPos: {x: 1731.66, y: 0, z: 17.58}
-  startRotation: {x: 0, y: -19.367, z: 0, w: 0}
+  startPos: {x: 1731.66, y: 0.1, z: 17.58}
+  startRotation: {x: 0, y: 0, z: 0, w: 0}
   playerPosition: 1
   playerCount: 1
   lapText: {fileID: 1697429959}
@@ -6445,13 +6445,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243221641}
-  m_LocalRotation: {x: -0, y: 0.9999597, z: -0, w: -0.00898051}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 181.02899, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1001 &243787348
 PrefabInstance:
   m_ObjectHideFlags: 0

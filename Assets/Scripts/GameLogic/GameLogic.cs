@@ -125,14 +125,14 @@ public class GameLogic : MonoBehaviour
         //If the current lap is not equal to the lap, We want to reset lapTimer
         if (currentLap != Lap)
         {
+            //Set lap = currentlap so we can run checkpoints again
+            Lap = currentLap;
+            lapTimeCount = 0.0f;
+
             //If the lap is not the very first 0 lap, Then reset the lapcount
-            if (Lap != 0)
-            {
-                lapTimeCount = 0.0f;
-            }
+
         }
-        //Set lap = currentlap so we can run checkpoints again
-        Lap = currentLap;
+
 
         //If the lap is greater than maxLaps we want to stop the code
         if (Lap > maxLaps)
@@ -147,7 +147,7 @@ public class GameLogic : MonoBehaviour
         }
         else if (Lap <= maxLaps)
         {
-            lapText.text = "Lap " + Lap + " of " + maxLaps;
+            lapText.text = "Lap " + (Lap + 1) + " of " + maxLaps;
         }
     }
 
