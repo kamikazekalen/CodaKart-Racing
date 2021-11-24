@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameLogic : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class GameLogic : MonoBehaviour
     public static Transform[] checkpointA;
 
     //Current lap and checkpoint variables
-    public static int currentCheckpoint = 0;
-    public static int currentLap = 0;
+    public static int currentCheckpoint, currentLap;
+
+    public GameObject finishPanel;
 
     //Lap used for text display and max lap
     public int Lap;
@@ -26,27 +28,21 @@ public class GameLogic : MonoBehaviour
     public int playerPosition = 1;
     public int playerCount = 1;
 
-    //All of the UI text variables
-    public Text lapText;
-
-    public Text lapTimerText;
-    public Text totalTimerText;
-
-    public Text startTimerText;
-
-    public Text positionTextUpper;
-    public Text positionTextLower;
+    //UI Text for the Timer Panel
+    public Text lapText, lapTimerText, totalTimerText, startTimerText, positionTextUpper, positionTextLower;
+    //UI Text for the Finish Panel
+    public Text winnerNameText, returnTimerText;
 
     //Lap timer arrays for Minutes : Seconds . Milliseconds
     public float[] lapTime = { 0, 0, 0 };
     public float[] totalTime = { 0, 0, 0 };
 
     //Counting numbers for the lap and total timers
-    public static float lapTimeCount;
-    public static float totalTimeCount;
+    public static float lapTimeCount, totalTimeCount;
 
-    //Boolean that determines when to start counting
+    //Private Booleans
     private bool startTiming;
+    private bool finish = false;
 
     // Start is called before the first frame update
     void Start()
@@ -87,11 +83,78 @@ public class GameLogic : MonoBehaviour
         startTimerText.text = "";
     }
 
+    IEnumerator FinishGame()
+    {
+        finish = true;
+        totalTimeCount = 0.0f;
+
+        startTimerText.text = "Finished!";
+        yield return new WaitForSeconds(2.0f);
+
+        startTimerText.text = "";
+        finishPanel.SetActive(true);
+
+        returnTimerText.text = "3";
+        yield return new WaitForSeconds(1.0f);
+        returnTimerText.text = "2";
+        yield return new WaitForSeconds(1.0f);
+        returnTimerText.text = "1";
+        yield return new WaitForSeconds(1.0f);
+        returnTimerText.text = "0";
+
+        Destroy(player.gameObject);
+        SceneManager.LoadScene("main menu");
+    }
+
     // Update is called once per frame 
     void Update()
     {
-       //If start timing is true do all the time counting
-       if (startTiming)
+        if (!finish)
+        {
+            TimerCount();
+            LapLogic();
+
+            //Update the player position text and the checkpointA array
+            positionTextUpper.text = playerPosition.ToString();
+            checkpointA = checkpointArray;
+        }
+    }
+
+    private void LapLogic()
+    {
+        //If the current lap is not equal to the lap, We want to reset lapTimer
+        if (currentLap != Lap)
+        {
+            //If the lap is not the very first 0 lap, Then reset the lapcount
+            if (Lap != 0)
+            {
+                lapTimeCount = 0.0f;
+            }
+        }
+        //Set lap = currentlap so we can run checkpoints again
+        Lap = currentLap;
+
+        //If the lap is greater than maxLaps we want to stop the code
+        if (Lap > maxLaps)
+        {
+            StartCoroutine(FinishGame());
+        }
+
+        //If the lap is the very first one, display it as 1 rather than 0. Else display it as lap
+        if (Lap == 0)
+        {
+            lapText.text = "Lap " + (Lap + 1) + " of " + maxLaps;
+        }
+        else if (Lap <= maxLaps)
+        {
+            lapText.text = "Lap " + Lap + " of " + maxLaps;
+        }
+    }
+
+    private void TimerCount()
+    {
+        //If start timing is true do all the time counting
+        if (startTiming)
         {
             //Increment both of the timers
             lapTimeCount += Time.deltaTime;
@@ -111,37 +174,5 @@ public class GameLogic : MonoBehaviour
         //Display the Minutes : Seconds . Milliseconds for both timers
         lapTimerText.text = string.Format("{0:00}:{1:00}.{2:000}", lapTime[0], lapTime[1], lapTime[2]);
         totalTimerText.text = string.Format("{0:00}:{1:00}.{2:000}", totalTime[0], totalTime[1], totalTime[2]);
-
-        //If the current lap is not equal to the lap, We want to reset lapTimer
-        if (currentLap != Lap)
-        {
-            //If the lap is not the very first 0 lap, Then reset the lapcount
-            if (Lap != 0)
-            {
-                lapTimeCount = 0.0f;
-            }
-        }
-        //Set lap = currentlap so we can run checkpoints again
-        Lap = currentLap;
-
-        //If the lap is greater than maxLaps we want to stop the code
-        if(Lap > maxLaps)
-        {
-            this.enabled = false;
-        }
-
-        //If the lap is the very first one, display it as 1 rather than 0. Else display it as lap
-        if (Lap == 0)
-        {
-            lapText.text = "Lap " + (Lap + 1) + " of " + maxLaps;
-        }
-        else if (Lap <= maxLaps)
-        {
-            lapText.text = "Lap " + Lap + " of " + maxLaps;
-        }
-
-        //Update the player position text and the checkpointA array
-        positionTextUpper.text = playerPosition.ToString();
-        checkpointA = checkpointArray;
     }
 }
