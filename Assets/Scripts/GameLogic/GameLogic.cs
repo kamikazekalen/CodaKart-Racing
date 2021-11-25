@@ -135,7 +135,7 @@ public class GameLogic : MonoBehaviour
 
 
         //If the lap is greater than maxLaps we want to stop the code
-        if (Lap > maxLaps)
+        if (Lap >= maxLaps)
         {
             StartCoroutine(FinishGame());
         }

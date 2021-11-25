@@ -19,9 +19,9 @@ public class WaterGroup : MonoBehaviour {
 
 
 	void Start(){
-		if(nameToFind == null || nameToFind == ""){
-			Debug.LogError (gameObject.name + " | nameToFind is null.");
-		}
+		//if(nameToFind == null || nameToFind == ""){
+		//	Debug.LogError (gameObject.name + " | nameToFind is null.");
+		//}
 
 		//Find all transforms that child for this script
 		Transform[] allChildTransforms = GetComponentsInChildren<Transform> ();
@@ -33,9 +33,9 @@ public class WaterGroup : MonoBehaviour {
 			}
 		}
 
-		if(waterWavePlains.Count == 0){
-			Debug.LogError (gameObject.name + " contains no one GameObject with \"" + nameToFind + "\" name.");
-		}
+		//if(waterWavePlains.Count == 0){
+		//	Debug.LogError (gameObject.name + " contains no one GameObject with \"" + nameToFind + "\" name.");
+		//}
 	}
 
 	void LateUpdate () {
